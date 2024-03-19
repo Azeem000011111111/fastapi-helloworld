@@ -73,7 +73,7 @@ def test_update_todo(test_app):
 #delete single entry with id
 def test_delete_todo(test_app):
     response = test_app.post("/todos/", json={"content": "test todo"})
-    todo_id = response.json()["id"]
+    todo_id = response.json()["1"]
 
     response = test_app.delete(f"/todos/{todo_id}")
     assert response.status_code == 200
