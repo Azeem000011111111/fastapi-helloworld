@@ -70,8 +70,7 @@ def test_update_todo(test_app):
     assert "id" in data and data["id"] == todo_id
 
 
-
-
+#delete single entry with id
 def test_delete_todo(test_app):
     response = test_app.post("/todos/", json={"content": "test todo"})
     todo_id = response.json()["id"]
@@ -82,4 +81,18 @@ def test_delete_todo(test_app):
     data = response.json()
     assert data["content"] == "test todo"
     assert "id" in data and data["id"] == todo_id
-    
+    assert data["status"] == "deleted"
+
+
+# #delete all entries 
+# def test_delete_all_todos(test_app):
+#     response = test_app.delete("/todos/")
+#     assert response.status_code == 200
+#     data = response.json()
+#     assert data["status"] == "deleted"
+#     assert data["message"] == "All todos deleted successfully"
+
+
+
+
+
